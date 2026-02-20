@@ -1,25 +1,72 @@
-# 🟠 E-commerce Cohort Quality Case Study
+# 🟠 E-commerce Customer Acquisition and Cohort Quality Analysis - A Case Study using GA4 - Bigquery
 
-**Addressing the common problem of deteriorating Cohort Quality in Customer Lifecycle**
-
----
-
-### Cohort Analysis Overview
-
-| Metric | Description | Badge |
-|--------|------------|-------|
-| 📊 **Customer Behavior** | Tracks acquisition cohorts and customer journey over time | ![Behavior](https://img.shields.io/badge/Behavior-Tracked-blue) |
-| 💰 **Economic Quality** | Evaluates LTV & Avg Order Value per cohort | ![LTV](https://img.shields.io/badge/LTV-High-orange) |
-| 🔄 **Purchase Patterns** | Measures repeat vs one-time buyers | ![Repeat Rate](https://img.shields.io/badge/Repeat%20Rate-High-green) |
-| 🏆 **Value Tier Mix** | Shows distribution across Platinum, Gold, Silver, Bronze tiers | ![Value Tier](https://img.shields.io/badge/Platinum-High-lightgrey) |
-| 📢 **Acquisition Channels** | Evaluates contribution of Direct, Search, Internal, Other channels | ![Channel Mix](https://img.shields.io/badge/Channels-Mixed-purple) |
+**Addressing the common problem of deteriorating Cohort Quality faced by Ecommerce Companies**
 
 ---
 
-### Quick Visual Highlights
+## 🚀 Dashboard Cover: Key Cohort Metrics
 
-![Cohort Quality](https://img.shields.io/badge/Cohort%20Quality-High-orange) ![Cohort Analysis](https://img.shields.io/badge/Analysis-Complete-blue)
+| KPI | Metric Description | Badge |
+|-----|--------|-------|
+| 📊 Average days to 2nd purchase | Measures activation speed — how quickly new customers become repeat buyers after first purchase. Lower = healthier onboarding and engagement. | ![Days to 2nd purchase](https://img.shields.io/badge/Avg%20days%20to%202nd%20purchase-3.03%25-blue) |
+| 🔄 Repeat Purchase Rate | Percentage of customers who purchase more than once. Primary indicator of early retention and cohort health. | ![Repeat Purchase Rate](https://img.shields.io/badge/Repeat%20Purchase%20Rate-42%25-green) |
+| 🏆 Percentage of One-time Buyers |  | ![Percentage of One-time Buyers](https://img.shields.io/badge/Percentage%20of%20One%20buyers-83.7%25-lightgrey) |
+| 🥇 Users Activated Within 7 days | Portion of customers making a second purchase within one week — measures strong early engagement momentum. | ![Percentage of Users within 7 days](https://img.shields.io/badge/Users%20Activated%20within%207%20days-87%25-yellow) |
+| ⚪ Users Activated Within 30 days | Coverage of successful activation window; shows whether customers eventually convert even if not immediately | ![Percentage of Users within 30 days](https://img.shields.io/badge/Users%20Activated%20Within%2030%20days-97%25-silver) |
+| 🟤 High-Value Customer Share | Percentage of customers reaching high behavioral value tiers based on purchase frequency and engagement. Indicates cohort quality | ![Value Tiers](https://img.shields.io/badge/Bronze-25%25-brown) |
+
+> 💡 Tip: Replace the badge numbers with your **actual calculated cohort metrics**.
 
 ---
 
-> 💡 **Tip:** All metrics and badges are live placeholders — replace with your actual cohort numbers or calculated KPIs for a polished, interactive report feel.
+## Overview
+
+This project investigates **customer acquisition effectiveness** and **cohort quality deterioration** for an ecommerce business using the Google Analytics 4 (GA4) public BigQuery dataset.
+
+Rather than relying on revenue (obfuscated in GA4 sample data), this analysis applies a **behavioral definition of customer value**, replicating how product analytics teams diagnose acquisition performance under **imperfect real-world data constraints**.
+
+**Objective:** Answer three acquisition-stage business questions:
+
+1. Which acquisition channels bring **high-value customers**?  
+2. How do **customer characteristics evolve over time**?  
+3. Why are **newer customer cohorts deteriorating** despite stable acquisition strategy?  
+
+---
+
+## Business Context
+
+Ecommerce companies frequently observe:
+
+- Increasing customer acquisition volume  
+- Stable marketing strategy  
+- Declining customer quality  
+
+This creates a critical ambiguity:
+
+> Is acquisition failing, or are customers failing to **activate after acquisition**?
+
+This project demonstrates a structured analytical workflow to **isolate the true driver**.
+
+---
+
+## Dataset
+
+**Source:** [Google Analytics 4 Obfuscated Ecommerce Dataset (BigQuery Public Data)](https://console.cloud.google.com/marketplace/details/bigquery-public-data/ga4-obfuscated)  
+
+**Characteristics:**
+
+- Event-level ecommerce tracking  
+- 3 months of observable acquisition cohorts  
+- Revenue values anonymized (near zero)  
+- Partial channel attribution  
+- No explicit CAC data  
+
+**Analytical Constraint:**  
+
+Because monetary metrics are obfuscated, **customer value must be inferred using behavioral proxies**, mirroring real industry scenarios involving **privacy loss and incomplete attribution**.
+
+---
+
+## Analytical Framework
+
+All analyses follow a **repeatable product analytics workflow**:
