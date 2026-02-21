@@ -119,17 +119,17 @@ Customer Lifecycle Stage
 
 ### **Lifecycle Focus:** 
 Customer Lifecycle Stage → Acquisition Economics  
-**Note: Because revenue metrics are obfuscated, acquisition economics are inferred using behavioral proxies such as repeat purchase rate, average orders, and value tier distribution.**
+**Note: Because revenue metrics are obfuscated, acquisition economics are inferred using behavioral proxies such as repeat purchase rate, average order per customer and value tier distribution.**
 
 ---
 
-## Data Modeling
+# Data Modeling
 
-A **customer-level analytical layer** (`customer360`) was constructed from event data.  
+To enable cohort-level and customer-level analyses, a **customer-level analytical layer** (`customer360`) was constructed from raw event data. This layer aggregates behavioral signals to support **inference of customer value** in the absence of revenue metrics.
 
 **Customer Grain:** One row per customer  
 
-**Core Fields:**
+### **Core Fields**
 
 | Column | Description |
 |--------|-------------|
@@ -140,25 +140,27 @@ A **customer-level analytical layer** (`customer360`) was constructed from event
 | `avg_order_value` | Mean order value proxy |
 | `value_tier` | Behavioral customer tier |
 
-**Metric Definition: Behavioral Customer Value**  
+### **Metric Definition: Behavioral Customer Value**
 
-Because revenue is obfuscated, customer value is defined using **engagement and purchasing behavior**.
+Since revenue is obfuscated in GA4, customer value is inferred using **engagement and purchasing behavior**. This approach mirrors real-world analytics scenarios where financial data is incomplete or unavailable.
 
-**Value Indicators:**
+### **Value Indicators**
 
-- `avg_orders_per_customer`  
-- `repeat_purchase_rate`  
-- `pct_one_time_buyers`  
-- `value tier distribution`  
-- `time to second purchase`  
+- `avg_orders_per_customer` — overall purchase frequency  
+- `repeat_purchase_rate` — likelihood of buying more than once  
+- `pct_one_time_buyers` — share of single-purchase customers  
+- `value tier distribution` — classification into Platinum/Gold/Silver/Bronze  
+- `time to second purchase` — speed of customer activation  
 
-**High-value customers** are those who:
+### **High-Value Customers**
 
-- Purchase again  
-- Purchase quickly  
-- Exhibit higher order frequency  
+Customers are considered high-value if they:
 
----
+- Purchase again after their first order  
+- Purchase quickly (short time to second purchase)  
+- Exhibit higher order frequency and engagement  
+
+
 ---
 
 ## Analysis 1 — Acquisition Channel Quality
