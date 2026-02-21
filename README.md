@@ -15,6 +15,55 @@
 | ⚪ Users Activated Within 30 days | Coverage of successful activation window; shows whether customers eventually convert even if not immediately | ![Users within 30 days](https://img.shields.io/badge/Within%2030%20days-97%25-silver) |
 | 🟤 High-Value Customer Share | Percentage of customers reaching high behavioral value tiers based on purchase frequency and engagement. Indicates cohort quality | ![High-Value Tiers](https://img.shields.io/badge/Platinum%20Gold-30.3%25-brown) |
 
+---
+
+# 🧠 Executive Summary — Customer Acquisition Investigation
+
+### Business Problem
+Customer acquisition volume remains stable, yet overall customer quality appears to decline over time.
+
+---
+
+## 🔎 Investigation Path
+
+| Investigation Step | Question Tested | Outcome |
+|-------------------|-----------------|---------|
+| **1️⃣ Acquisition Quality** | Are some channels bringing lower-value customers? | ❌ No meaningful quality differences across channels |
+| **2️⃣ Cohort Evolution** | Do newer customers behave differently over time? | ✅ Newer cohorts show weaker engagement |
+| **3️⃣ Lifecycle Diagnosis** | What behavioral mechanism explains deterioration? | ✅ Customers increasingly fail to activate after first purchase |
+
+---
+
+## 📊 Executive KPI Snapshot
+
+| Metric | Observation | Badge |
+|--------|------------|-------|
+| 📊 Avg Orders per Customer | Low engagement depth | ![Avg Orders](https://img.shields.io/badge/Avg%20Orders-1.30-blue) |
+| 🔄 Repeat Purchase Rate | Weak retention | ![Repeat Rate](https://img.shields.io/badge/Repeat%20Rate-18%25-green) |
+| 🚫 One-Time Buyers | Dominant behavior pattern | ![One Time](https://img.shields.io/badge/One--Time%20Buyers-82%25-red) |
+| 🏆 High-Value Customers | Small minority | ![Platinum](https://img.shields.io/badge/Platinum%20Share-~12%25-lightgrey) |
+
+---
+
+## 🎯 Final Diagnosis
+
+Customer quality decline is **not caused by acquisition channel performance**.
+
+The primary failure occurs **after acquisition**, where customers increasingly fail to transition beyond their first purchase.
+
+**Root Cause:** Early lifecycle activation breakdown.
+
+---
+
+## 💼 Business Implication
+
+Optimizing marketing spend alone will not reverse performance decline.
+
+Impact is more likely achieved through:
+
+- post-purchase engagement strategy
+- onboarding and activation improvements
+- early lifecycle retention interventions
 
 ---
 
@@ -121,9 +170,17 @@ Because revenue is obfuscated, customer value is defined using **engagement and 
 
 ## Analysis 1 — Acquisition Channel Quality
 
-**Business Question:** Which channels bring **high-value customers**?  
+---
 
-**Metrics:**
+## 🧭 Investigation Progress
+
+**Customer Quality Decline Investigation**
+
+`[ STEP 1: Acquisition Quality ] → Cohort Evolution → Lifecycle Diagnosis → Root Cause`
+
+**Current Objective:** Test whether acquisition channels explain declining customer quality.
+
+--- 
 
  📊 **Acquisition Quality KPI Summary**
 
@@ -135,23 +192,44 @@ Because revenue is obfuscated, customer value is defined using **engagement and 
 | 🏆 Platinum Customers | 10–13% | ![Platinum](https://img.shields.io/badge/Platinum%20Share-~12%25-lightgrey) |
 | 👥 Customers Acquired | 4,066 | ![Customers](https://img.shields.io/badge/Customers-4066-purple) | 
 
+### Key Results — Acquisition Channel Quality
+
+| Channel Group | Customers | Avg Orders | Repeat Rate | Platinum % | One-Time Buyers % |
+|---------------|-----------|------------|-------------|------------|------------------|
+| Internal / Self Referral | 485 | 1.32 | 0.20 | 0.13 | 0.80 |
+| Unattributed (Consent Loss) | 551 | 1.34 | 0.19 | 0.10 | 0.81 |
+| Direct | 891 | 1.29 | 0.19 | 0.10 | 0.81 |
+| Other / Unknown | 925 | 1.30 | 0.16 | 0.10 | 0.84 |
+| Search (Paid/Organic) | 1214 | 1.25 | 0.16 | 0.09 | 0.84 |
+
 **Key Finding:**  
 - Engagement is shallow coupled with a weak retention. 
 - Activation Failure is high with the dominant behavioral pattern being one-time purchasing.
 - Channel performance differences exist — but they are small relative to the structural issue.
 
 **Implication:**  
-Customer acquisition quality is broadly similar across channels, with minor behavioral advantages in Internal and Direct traffic. However, across all channels, approximately 80% of customers purchase only once, indicating that retention—not acquisition mix—is the primary performance constraint. Strategic focus should shift toward post-purchase engagement rather than channel reallocation.
+The quality of customers is broadly similar across all channels, with minor behavioral advantages in Internal and Direct traffic. However, across all channels, approximately 80% of customers purchase only once, indicating that retention—not acquisition mix—is the primary performance constraint. Strategic focus should shift toward post-purchase engagement rather than channel reallocation.
 
 **Visualization:**  
 ![Analysis 1 - Acquisition Channel Quality](./visuals/01_Channel_Quality_trend.png)
 
+
+**Hypothesis Status:** ❌ Acquisition channels are NOT the primary driver.
 ---
 
 ## Analysis 2 — Cohort Evolution
 
-**Business Question:** How do **customer characteristics change over time**?  
+---
 
+## 🧭 Investigation Progress
+
+**Customer Quality Decline Investigation**
+
+Acquisition Quality → `[ STEP 2: Cohort Evolution ]` → Lifecycle Diagnosis → Root Cause
+
+**Current Objective:** Determine whether customer behavior changes across acquisition cohorts over time.
+
+---
 Customers were grouped by **first purchase month**.
 
 **Metrics Examined:**
@@ -173,11 +251,22 @@ Customer quality **degraded progressively** after acquisition.
 **Visualization:**  
 ![Analysis 2 - Cohort Evolution](./visualizations/cohort_evolution.png)
 
+**Hypothesis Status:** ✅ Customer behavior worsens across newer cohorts.
 ---
 
 ## Analysis 3 — Cohort Deterioration Diagnosis
 
-**Business Question:** Why are cohorts deteriorating despite **stable acquisition strategy**?  
+---
+
+## 🧭 Investigation Progress
+
+**Customer Quality Decline Investigation**
+
+Acquisition Quality → Cohort Evolution → `[ STEP 3: Lifecycle Diagnosis ]` → Root Cause
+
+**Current Objective:** Identify the behavioral mechanism causing cohort deterioration.
+
+---
 
 **Diagnostic Dimensions:**
 
@@ -191,6 +280,15 @@ The business problem is **not acquisition efficiency** — it is an **early life
 **Visualization:**  
 ![Analysis 3 - Cohort Deterioration Diagnosis](./visualizations/cohort_deterioration.png)
 
+---
+
+## 🧭 Investigation Progress
+
+**Customer Quality Decline Investigation**
+
+Acquisition Quality → Cohort Evolution → Lifecycle Diagnosis → `[ ROOT CAUSE IDENTIFIED ]`
+
+**Root Cause Identified:** Early lifecycle activation failure.
 ---
 
 ## Key Takeaways
