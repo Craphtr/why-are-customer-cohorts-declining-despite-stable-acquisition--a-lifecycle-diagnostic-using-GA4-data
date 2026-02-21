@@ -1,4 +1,4 @@
-# 🟠 E-commerce Customer Acquisition and Cohort Quality Analysis - A Case Study using GA4 - Bigquery
+# 🟠 # Diagnosing Cohort Quality Decline in Ecommerce — Behavioral Case Study (BigQuery)
 
 **Addressing the common problem of deteriorating Cohort Quality faced by Ecommerce Companies**
 
@@ -15,7 +15,6 @@
 | ⚪ Users Activated Within 30 days | Coverage of successful activation window; shows whether customers eventually convert even if not immediately | ![Users within 30 days](https://img.shields.io/badge/Within%2030%20days-97%25-silver) |
 | 🟤 High-Value Customer Share | Percentage of customers reaching high behavioral value tiers based on purchase frequency and engagement. Indicates cohort quality | ![High-Value Tiers](https://img.shields.io/badge/Platinum%20Gold-30.3%25-brown) |
 
----
 ---
 
 # 🧠 Executive Summary — Customer Acquisition Investigation
@@ -88,27 +87,23 @@ The analysis follows a **sequential diagnostic approach**:
 3. Diagnose lifecycle mechanisms driving deterioration  
 
 This workflow demonstrates how structured analytics can **isolate the true driver** of declining customer quality.
+
 ---
 
-## Dataset
+# Data & Analytical Framework
 
 **Source:** [Google Analytics 4 Obfuscated Ecommerce Dataset (BigQuery Public Data)](https://console.cloud.google.com/marketplace/details/bigquery-public-data/ga4-obfuscated)  
 
-**Characteristics:**
-
+**###Characteristics:**
 - Event-level ecommerce tracking  
 - 3 months of observable acquisition cohorts  
 - Revenue values anonymized (near zero)  
 - Partial channel attribution  
 - No explicit CAC data  
 
-**Analytical Constraint:**  
-
+**###Analytical Constraint:**  
 Because monetary metrics are obfuscated, **customer value must be inferred using behavioral proxies**, mirroring real industry scenarios involving **privacy loss and incomplete attribution**.
 
----
-
-## Analytical Framework
 
 All analyses follow a **repeatable product analytics workflow**:
 
@@ -119,8 +114,8 @@ Customer Lifecycle Stage
 ⬇️ SQL Modeling  
 ⬇️ Decision Interpretation
 
-
-**Lifecycle focus:** Customer Lifecycle Stage → **Acquisition Economics**
+**Lifecycle Focus:** Customer Lifecycle Stage → Acquisition Economics  
+**Note: Because revenue metrics are obfuscated, acquisition economics are inferred using behavioral proxies such as repeat purchase rate, average orders, and value tier distribution.**
 
 ---
 
