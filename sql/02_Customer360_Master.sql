@@ -95,6 +95,8 @@ select
   first_order_channel,
   first_order_amount,
   last_order_channel,
+  recency,
+  tenure_days,
   recency_score,
   frequency_score,
   monetary_score,
