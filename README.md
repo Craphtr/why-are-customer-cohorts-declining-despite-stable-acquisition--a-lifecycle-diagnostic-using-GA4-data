@@ -174,7 +174,7 @@ Customers are considered high-value if they:
 --- 
 Customer quality is declining despite stable acquisition strategy.
 
-### **First Working Hypothesis:** Some acquisition channels may be bringing lower quality customers. 
+### **1st Working Hypothesis:** Some acquisition channels may be bringing lower quality customers. 
 
 If true, reallocating marketing spend could solve performance decline.
 
@@ -236,7 +236,8 @@ Acquisition Quality → `[ ANALYSIS STEP 2: Cohort Evolution ]` → Lifecycle Di
 Acquisition channels were found not to explain declining customer quality.
 This step evaluates whether behavioral quality changes across customer cohorts over time.
 
-### **Second Working Hypothesis:** Customer behavior deteriorates across newer acquisition cohorts.
+---
+### **2nd Working Hypothesis:** Customer behavior deteriorates across newer acquisition cohorts.
 
 If true, the decline originates after acquisition and indicates structural changes in customer engagement.
 
@@ -257,6 +258,9 @@ These metrics evaluate whether customer engagement depth and value composition c
 
 ### **Visualization:**  
 ![Analysis 2 - Cohort Evolution](./visuals/02_Cohort_Evolution.png)
+
+### **Key Results**
+
 
 ### **Key Findings**  
 - Customer volume expanded from November to December before declining in January, indicating mid-period acquisition scaling.
@@ -281,7 +285,7 @@ If this trajectory continues:
 
 ### **Hypothesis Status:** ✅ Customer behavior worsens across newer cohorts.
 
-### **Decision - Next Hypothesis
+### **Decision - Next Hypothesis**
 Since deterioration occurs after acquisition and progressively across time, the next step is to identify where in the customer lifecycle engagement breaks down.
 
 Next Step: Diagnose lifecycle-stage friction driving retention collapse.
@@ -298,21 +302,80 @@ Next Step: Diagnose lifecycle-stage friction driving retention collapse.
 
 Acquisition Quality → Cohort Evolution → `[ ANALYSIS STEP 3: Lifecycle Diagnosis ]` → Root Cause
 
-**Current Objective:** Identify the behavioral mechanism causing cohort deterioration.
-
 ---
 
-**Diagnostic Dimensions:**
+### **Diagnostic Objective:**
 
-- **Acquisition Stability:** Channel mix remained largely constant  
-- **Behavioral Change:** Time to second purchase increased, repeat purchase probability declined  
-- **Activation Failure:** Customers increasingly failed to transition beyond first purchase  
+#### Having established that cohort quality deterioration exists and is not channel-driven, this step investigates **where in the early customer lifecycle behavioral breakdown occurs**.
 
-**Core Insight:**  
-The business problem is **not acquisition efficiency** — it is an **early lifecycle activation breakdown**. Marketing optimization alone would **not solve performance decline**.
+### **Third Working Hypothesis:**
+
+#### Customer quality deterioration is driven by an **early lifecycle activation failure**, where newer customers increasingly fail to reach a second purchase within the critical post-acquisition window. 
+---
+
+### 📊 Lifecycle Activation KPI Summary 
+
+| KPI | Value | Badge |
+|-----|-------|-------|
+| 🔄 Repeat Purchase Rate | 78% → 16% | ![Repeat Rate](https://img.shields.io/badge/Repeat%20Rate-16%25-red) |
+| ⏱ Avg Days to Second Purchase | 3.9 → 1.49 days (↑) | ![Time to 2nd Purchase](https://img.shields.io/badge/Avg%20Days%20to%202nd%20Purchase-Increasing-orange) |
+| ⚡ Purchases Within 7 Days | 85% → 90% (↓) | ![7 Day Activation](https://img.shields.io/badge/7--Day%20Activation-Declining-red) |
+| 📅 Purchases Within 30 Days | 97% → 100% (↑) | ![30 Day Activation](https://img.shields.io/badge/30--Day%20Activation-Declining-red) |
+| 🏆 Platinum Customers | 24% → 8% | ![Platinum](https://img.shields.io/badge/Platinum%20Share-8%25-lightgrey) |
 
 **Visualization:**  
-![Analysis 3 - Cohort Deterioration Diagnosis](./visualizations/cohort_deterioration.png)
+![Analysis 3 - Cohort Deterioration Diagnosis](./visuals/03_repeat_purchase_rate_vs_pct_one_time_buyers.png)
+
+### **Key Results — Lifecycle Activation**
+
+| Cohort Date | New Customers | Repeat Purchase Rate (%) | One-Time Buyers (%) | Platinum (%) | Bronze (%) | Avg Days to 2nd Purchase | Users Within 7 Days (%) |
+|-------------|---------------|-------------------------|-------------------|--------------|------------|-------------------------|------------------------|
+| Nov 2020    | 1,481         | 73                      | 71                | 24           | 26         | 3.90                    | 85                     |
+| Dec 2020    | 1,813         | 38                      | 86                | 16           | 35         | 3.71                    | 86                     |
+| Jan 2021    | 772           | 16                      | 94                | 8            | 41         | 1.49                    | 90                     |
+
+
+![Analysis 3 - Activation Speed and Coverage](./visuals/04_Activation_Speed_and_Coverage_Chart.png)
+
+
+### **Key Findings & Diagnostic Insight**
+
+- **Behavioral quality collapse:** Repeat purchase rate dropped from 78% → 16% across cohorts; one-time buyers surged from 71% → 94%.  
+- **High-value tier erosion:** Platinum customers fell from 24% → 8%; gold remained stable; silver and bronze increased.  
+- **Activation failure as root cause:** Most customers who do repeat purchase do so quickly (within 7–30 days), but the **activation probability is low** — fewer customers enter the repeat journey.  
+- **Structural deterioration:** Later cohorts contain more one-time buyers and fewer high-value customers, confirming that **cohort quality deterioration occurs early in the lifecycle**.  
+- **Acquisition channels remain stable:** Channel mix shows no meaningful change, so deterioration is **not driven by marketing** but by early lifecycle activation failure. 
+
+### Economic Implication
+
+- Activation failure compresses future **customer lifetime value** while acquisition costs remain unchanged.  
+- Apparent customer growth masks declining **unit economics**.  
+- Misdiagnosing the problem as acquisition-driven could lead to **inefficient marketing spend, channel reallocations, and incorrect CAC optimization**.  
+- If unresolved: margin erosion accelerates, revenue growth becomes increasingly dependent on continuous acquisition, and high churn dominates newer cohorts.
+
+
+### Decision Interpretation
+
+- **Root cause:** Early lifecycle failure — insufficient activation after first purchase.  
+- **Implication:** Post-purchase experience is the true leverage point, not acquisition strategy.  
+- **Observation:** Customers who activate repeat quickly (7–30 days) are high-value; most newer users fail to reach this stage.
+
+
+### Recommendation to Management
+
+1. **Introduce Activation Metrics as Core KPIs**  
+   Track second-purchase conversion rather than first-order revenue.  
+
+2. **Strengthen Early Lifecycle Engagement (first 7–30 days)**  
+   - Personalized post-purchase communication  
+   - Product discovery reinforcement  
+   - Targeted retention incentives  
+
+3. **Evaluate Acquisition by Behavioral Outcomes**  
+   Optimize campaigns based on repeat purchase formation, not first-order conversion alone.  
+   Run activation experiments **before increasing acquisition spend**.
+
+> Improving activation conversion will increase **customer lifetime value** more efficiently than reallocating marketing channels or expanding acquisition volume.
 
 ---
 
@@ -323,7 +386,7 @@ The business problem is **not acquisition efficiency** — it is an **early life
 Acquisition Quality → Cohort Evolution → Lifecycle Diagnosis → `[ ROOT CAUSE IDENTIFIED ]`
 
 **Root Cause Identified:** Early lifecycle activation failure.
----
+
 ---
 
 ## Key Takeaways
