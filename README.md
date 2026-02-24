@@ -171,6 +171,7 @@ Customers are considered high-value if they:
 
 `[ ANALYSIS STEP 1: Acquisition Quality ] → Cohort Evolution → Lifecycle Diagnosis → Root Cause`
 
+--- 
 Customer quality is declining despite stable acquisition strategy.
 
 ### **First Working Hypothesis:** 
