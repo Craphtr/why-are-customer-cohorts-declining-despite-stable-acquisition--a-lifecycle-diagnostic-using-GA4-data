@@ -65,22 +65,53 @@ Customer quality decline is not an acquisition problem. The primary failure occu
 
 ---
 
-#### **Technical Architecture**
-**Data Stack:** BigQuery (transformation) → Python (visualization)
+# Data & Analytical Framework
 
-**Source:** Google Analytics 4 Obfuscated Ecommerce Dataset (BigQuery Public Data)
+**Source:** [Google Analytics 4 Obfuscated Ecommerce Dataset (BigQuery Public Data)](https://console.cloud.google.com/marketplace/details/bigquery-public-data/ga4-obfuscated)  
 
-
+### **Characteristics:**
+- Event-level ecommerce tracking  
+- 3 months of observable acquisition cohorts  
+- Revenue values anonymized (near zero)  
+- Partial channel attribution  
+- No explicit CAC data
 **Technical Note:** All SQL code used production-grade patterns: modular CTEs, incremental logic, and extensible schema design. This architecture mirrors how I structure client engagements for scalability.
+
+---
+
+# Data Modeling
+
+To enable cohort-level and customer-level analyses, I constructed a **customer-level analytical layer** (`customer360`) from raw event data. This layer aggregates behavioral signals to support **inference of customer value** in the absence of revenue metrics.
+
+**Customer Grain:** One row per customer  
+
+### **Metric Definition: Behavioral Customer Value**
+
+Since revenue is obfuscated in GA4, I inferred customer value using **engagement and purchasing behavior**. This approach mirrors real-world analytics scenarios where financial data is incomplete or unavailable.
+
+#### **Value Indicators**
+
+- `avg_orders_per_customer` — overall purchase frequency  
+- `repeat_purchase_rate` — likelihood of buying more than once  
+- `pct_one_time_buyers` — share of single-purchase customers  
+- `value tier distribution` — classification into Platinum/Gold/Silver/Bronze  
+- `time to second purchase` — speed of customer activation  
+
+#### **High-Value Customers**
+
+Customers are considered high-value if they:
+
+- Purchase again after their first order  
+- Purchase quickly (short time to second purchase)  
+- Exhibit higher order frequency and engagement  
 
 ---
 
 # 📊 **Phase 1: Acquisition Quality Audit**
 
-### **Hypothesis**
-"Performance decline stems from channel mix shift—lower-quality channels scaling while high-quality channels stagnate."
+### **Hypothesis** - "Performance decline stems from channel mix shift—lower-quality channels scaling while high-quality channels stagnate."
 
-#### **Analytical Approach**
+### **Analytical Approach**
 I evaluated customer quality by first-touch attribution channel, measuring behavioral depth (purchase frequency, activation speed, value tier) as revenue proxies.
 
 ### **Visualization:**  
@@ -102,40 +133,38 @@ I evaluated customer quality by first-touch attribution channel, measuring behav
 - Approximately 80% of customers purchase only once, regardless of acquisition source.
 - Channel differences exist but are marginal relative to overall behavioral patterns.
 
-#### **Consultant's Insight**
+### **Consultant's Insight**
 Channel effects are marginal. The 4-percentage-point gap between "best" and "worst" channels is insignificant against the 82% one-time buyer rate across all sources.Customer behavior converges toward the same outcome independent of acquisition source.
 This indicates the business is successfully acquiring customers but struggling to retain them.
 The performance constraint appears post-acquisition, not in marketing mix.
 
->#### **Judgement Call:** I initially suspected Search channel dilution due to its scale (28-31% of volume). However, cross-cohort analysis revealed channel mix remained stable—Search didn't increase disproportionately as quality declined. The deterioration pattern persisted uniformly across all sources. The problem was systemic, not channel-specific, forcing me to look post-acquisition.
+>### **Judgement Call:** I initially suspected Search channel dilution due to its scale (28-31% of volume). However, cross-cohort analysis revealed channel mix remained stable—Search didn't increase disproportionately as quality declined. The deterioration pattern persisted uniformly across all sources. The problem was systemic, not channel-specific, forcing me to look post-acquisition.
 
-#### **❌ Hypothesis rejected** 
-Channel reallocation will not solve quality decline. The constraint lies downstream.
+### **❌ Hypothesis rejected** Channel reallocation will not solve quality decline. The constraint lies downstream.
 
 ### **Decision - Next Hypothesis:**  
 If acquisition quality is stable, cohort deterioration must occur after customers enter the lifecycle
 
-Next Step: Analyze how customer cohorts evolve over time.
+---
 
 # 📊 **Phase 2: Cohort Evolution Analysis**
 
-### **Hypothesis**
-"Customer behavior deteriorates across newer acquisition cohorts, indicating structural market shifts."
+### **Hypothesis** - "Customer behavior deteriorates across newer acquisition cohorts, indicating structural market shifts."
 
-#### **Analytical Approach**
+### **Analytical Approach**
 I grouped Customers by **first purchase month** measuring economic and behavioral proxy metrics (`new_customers`,`repeat_purchase_rate`,`pct_one_time_buyers`,`value_tiers`) to observe behavioral evolution.
 
-#### **Visualization:**  
+### **Visualization:**  
 ![Analysis 2 - Cohort Evolution](./visuals/02_Cohort_Evolution.png)
 
-#### **Cohort Quality Trajectory**
+### **Cohort Quality Trajectory**
 | Cohort   | New Customers | Repeat Rate | Avg Orders | One-Time % | Platinum+Gold % | Bronze % | Channel Mix |
 | -------- | ------------- | ----------- | ---------- | ---------- | --------------- | -------- | ----------- |
 | Nov 2020 | 1,481         | 29%         | 1.44       | 71%        | 36%             |   34%    | Stable      |
 | Dec 2020 | 1,813         | 14%         | 1.26       | 86%        | 28%             |   42%    | Stable      |
 | Jan 2021 | 772           | 6%          | 1.18       | 94%        | 24%             |   44%    | Stable      |
 
-#### **Critical Observations**
+### **Critical Observations**
 **1. Accelerating Deterioration**
 
  - Repeat purchase rate collapsed 79% (29% → 6%)
@@ -147,28 +176,26 @@ I grouped Customers by **first purchase month** measuring economic and behaviora
  - December: 22% volume increase, 52% repeat rate decline
  - Pattern: Scaling acquisition correlated with quality dilution
 
-#### **Consultant Insight**
+### **Consultant Insight**
 Earlier cohorts demonstrated stronger engagement and value concentration, establishing a baseline of efficient acquisition.
 As acquisition scaled, customer depth declined — suggesting growth shifted from quality-driven acquisition toward volume expansion. This pattern signals acquisition dilution, where newer customers enter the lifecycle with weaker long-term engagement potential.
 
-#### **Economic Implication**
+### **Economic Implication**
 If this trajectory continues:
 - Future customer lifetime value (LTV) will compress.
 - Growth may appear healthy through rising customer counts while retention weakens underneath.
 - Revenue expansion risks masking deteriorating unit economics and rising churn exposure.
 
-#### **Phase 2 Conclusion**
-#### **✅ Hypothesis confirmed - Cohort quality deteriorates structurally** 
+### **Phase 2 Conclusion**
+### **✅ Hypothesis confirmed - Cohort quality deteriorates structurally** 
 The failure occurs post-acquisition, triggered by scaling without activation infrastructure.
 
-#### **Decision - Next Hypothesis**
+### **Decision - Next Hypothesis**
 Since deterioration occurs after acquisition and progressively across time, then I identify where in the customer lifecycle engagement breaks down.
 
-Next Step: Diagnose lifecycle-stage friction driving retention collapse.
-
+---
 # **📊 Phase 3: Lifecycle Mechanism Diagnosis**
-#### **Diagnostic Objective**
-Isolate the precise behavioral breakpoint where customers fail to generate value.
+### **Diagnostic Objective** - Isolate the precise behavioral breakpoint where customers fail to generate value.
 
 #### **Root Cause Identification**
 
