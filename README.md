@@ -135,6 +135,9 @@ Next Step: Analyze how customer cohorts evolve over time.
 #### **Analytical Approach**
 I grouped Customers by **first purchase month** measuring economic and behavioral proxy metrics (`new_customers`,`repeat_purchase_rate`,`pct_one_time_buyers`,`value_tiers`) to observe behavioral evolution.
 
+#### **Visualization:**  
+![Analysis 2 - Cohort Evolution](./visuals/02_Cohort_Evolution.png)
+
 #### **Cohort Quality Trajectory**
 | Cohort   | New Customers | Repeat Rate | Avg Orders | One-Time % | Platinum+Gold % | Bronze % | Channel Mix |
 | -------- | ------------- | ----------- | ---------- | ---------- | --------------- | -------- | ----------- |
@@ -179,6 +182,10 @@ Isolate the precise behavioral breakpoint where customers fail to generate value
 
 #### **Root Cause Identification**
 
+
+
+
+
 #### **Customer Journey Breakdown:**
 
 ACQUISITION → [First Purchase] → ACTIVATION WINDOW (0-30 days) → [Second Purchase] → RETENTION
@@ -192,4 +199,4 @@ Phase 3: ACTIVATION FAILURE identified as breakpoint
     Activation infrastructure insufficient for scaled volume
 
 #### **Phase 3 Conclusion**
-#### **✅ Root cause isolated Early - lifecycle activation failure is the primary driver**
+#### **✅ Root cause isolated - Early-lifecycle activation failure is the primary driver**
