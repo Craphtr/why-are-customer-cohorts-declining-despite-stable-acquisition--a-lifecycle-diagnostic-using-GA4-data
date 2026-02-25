@@ -59,29 +59,27 @@ PHASE 3: Lifecycle Mechanism Diagnosis
 **Source:** Google Analytics 4 Obfuscated Ecommerce Dataset (BigQuery Public Data)
 
 **Modular SQL Pipeline:** Three-tier architecture ensuring reproducibility
-plain
-
 repository/
 ├── sql/
-│   ├── 01_Customer360_RawAgg.sql         # Identity resolution & feature engineering
-|   ├── 02_Customer360_Master.sql
-│   ├── 03_high_value_channels.sql        # Cohort-based metric computation 
-|   ├── 04_cohort_evolution.sql           # Cohort-based metric computation
-│   └── 05_Cohort_deterioration.sql       # Root-cause statistical testing
-├── visuals/                              # Publication-ready charts
-|   ├── 01_Channel_Quality_trend.png      # acquisition quality by channel
-|   ├── 02_Cohort_Evolution.png           # cohort degradation by time
-|   ├── 03_repeat_purchase_rate_vs_pct_one_time_buyers.png
-|   ├── 04_Activation_Speed_and_Coverage_Chart.png
-|   results/
-|   ├── 01_customer360_rawaggregate_table.csv
-|   ├── 02_customer360_master_table.csv
-|   ├── 03_high_value_channel_results.csv
-|   ├── 04_cohort_evolution_results.csv
-|   ├── 05_cohort_deterioration_results.csv
+│   ├── 01_Customer360_RawAgg.sql          # Identity resolution & feature engineering
+│   ├── 02_Customer360_Master.sql
+│   ├── 03_high_value_channels.sql         # Acquisition quality by channel
+│   ├── 04_cohort_evolution.sql            # Cohort-based metric computation
+│   └── 05_Cohort_deterioration.sql        # Root-cause statistical testing
+├── visuals/                               # Publication-ready charts
+│   ├── 01_Channel_Quality_trend.png       # Acquisition quality by channel
+│   ├── 02_Cohort_Evolution.png            # Cohort degradation by time
+│   ├── 03_repeat_purchase_rate_vs_pct_one_time_buyers.png
+│   └── 04_Activation_Speed_and_Coverage_Chart.png
+├── results/
+│   ├── 01_customer360_rawaggregate_table.csv
+│   ├── 02_customer360_master_table.csv
+│   ├── 03_high_value_channel_results.csv
+│   ├── 04_cohort_evolution_results.csv
+│   └── 05_cohort_deterioration_results.csv
 ├── docs/
-│   └── methodology.md                    # Full metric definitions & assumptions
-└── README.md                             # Executive summary (this document)
+│   └── methodology.md                     # Full metric definitions & assumptions
+└── README.md                              # Executive summary (this document)
 
 **Technical Note:** All SQL code used production-grade patterns: modular CTEs, incremental logic, and extensible schema design. This architecture mirrors how I structure client engagements for scalability.
 
