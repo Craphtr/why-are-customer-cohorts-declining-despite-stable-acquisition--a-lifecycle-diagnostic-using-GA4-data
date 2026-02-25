@@ -75,6 +75,7 @@ Customer quality decline is not an acquisition problem. The primary failure occu
 - Revenue values anonymized (near zero)  
 - Partial channel attribution  
 - No explicit CAC data
+
 **Technical Note:** All SQL code used production-grade patterns: modular CTEs, incremental logic, and extensible schema design. This architecture mirrors how I structure client engagements for scalability.
 
 ---
@@ -140,10 +141,9 @@ The performance constraint appears post-acquisition, not in marketing mix.
 
 >### **Judgement Call:** I initially suspected Search channel dilution due to its scale (28-31% of volume). However, cross-cohort analysis revealed channel mix remained stable—Search didn't increase disproportionately as quality declined. The deterioration pattern persisted uniformly across all sources. The problem was systemic, not channel-specific, forcing me to look post-acquisition.
 
-### **❌ Hypothesis rejected** Channel reallocation will not solve quality decline. The constraint lies downstream.
+### **❌ Hypothesis rejected** - Channel reallocation will not solve quality decline. The constraint lies downstream.
 
-### **Decision - Next Hypothesis:**  
-If acquisition quality is stable, cohort deterioration must occur after customers enter the lifecycle
+### **Decision - Next Hypothesis:**  - If acquisition quality is stable, cohort deterioration must occur after customers enter the lifecycle
 
 ---
 
@@ -197,13 +197,32 @@ Since deterioration occurs after acquisition and progressively across time, then
 # **📊 Phase 3: Lifecycle Mechanism Diagnosis**
 ### **Diagnostic Objective** - Isolate the precise behavioral breakpoint where customers fail to generate value.
 
-#### **Root Cause Identification**
+**Visualization:**  
+![Analysis 3 - Cohort Deterioration Diagnosis](./visuals/03_repeat_purchase_rate_vs_pct_one_time_buyers.png)
 
+### **Key Results — Lifecycle Activation**
 
+| Cohort Date | New Customers | Repeat Purchase Rate (%) | One-Time Buyers (%) | Platinum (%) | Bronze (%) | Avg Days to 2nd Purchase | Users Within 7 Days (%) |
+|-------------|---------------|-------------------------|-------------------|--------------|------------|-------------------------|------------------------|
+| Nov 2020    | 1,481         | 73                      | 71                | 24           | 26         | 3.90                    | 85                     |
+| Dec 2020    | 1,813         | 38                      | 86                | 16           | 35         | 3.71                    | 86                     |
+| Jan 2021    | 772           | 16                      | 94                | 8            | 41         | 1.49                    | 90                     |
 
+![Analysis 3 - Activation Speed and Coverage](./visuals/04_Activation_Speed_and_Coverage_Chart.png)
 
+### **Root Cause Identification**
+- **Activation failure as root cause:** Most customers who do repeat purchase do so quickly (within 7–30 days), but the **activation probability is low** — fewer customers enter the repeat journey.  
+- **Structural deterioration:** Later cohorts contain more one-time buyers and fewer high-value customers, confirming that **cohort quality deterioration occurs early in the lifecycle**.  
+- **Acquisition channels remain stable:** Channel mix shows no meaningful change, so deterioration is **not driven by marketing** but by early lifecycle activation failure. 
 
-#### **Customer Journey Breakdown:**
+### Economic Implication
+
+- Activation failure compresses future **customer lifetime value** while acquisition costs remain unchanged.  
+- Apparent customer growth masks declining **unit economics**.  
+- Misdiagnosing the problem as acquisition-driven could lead to **inefficient marketing spend, channel reallocations, and incorrect CAC optimization**.  
+- If unresolved: margin erosion accelerates, revenue growth becomes increasingly dependent on continuous acquisition, and high churn dominates newer cohorts.
+
+### **Customer Journey Breakdown:**
 
 ACQUISITION → [First Purchase] → ACTIVATION WINDOW (0-30 days) → [Second Purchase] → RETENTION
 
@@ -217,3 +236,66 @@ Phase 3: ACTIVATION FAILURE identified as breakpoint
 
 #### **Phase 3 Conclusion**
 #### **✅ Root cause isolated - Early-lifecycle activation failure is the primary driver**
+
+💼 Strategic Recommendations
+Immediate Actions (0-30 Days)
+
+| Initiative                      | Owner               | Investment | Success Metric          |
+| ------------------------------- | ------------------- | ---------- | ----------------------- |
+| **Activation Experiment**       | Retention Marketing | \$150K     | +5pp 30-day repeat rate |
+| **Post-Purchase Journey Audit** | Product/UX          | 40 hrs     | Journey map completed   |
+| **KPI Migration**               | Analytics           | 20 hrs     | Board reporting updated |
+
+90-Day Strategic Shift
+From: Acquisition-volume optimization
+To: Activation-efficiency optimization
+
+---
+
+### **🧠 Methodology & Technical Notes**
+Behavioral Value Proxy Framework
+
+Due to revenue obfuscation, I developed a behavioral LTV prediction model:
+
+| Tier         | Behavioral Criteria               | Predictive Rationale                          |
+| ------------ | --------------------------------- | --------------------------------------------- |
+| **Platinum** | ≥3 orders OR 2nd purchase ≤7 days | Highest correlation with long-term engagement |
+| **Gold**     | 2 orders, 2nd purchase 8-30 days  | Moderate activation, stable retention         |
+| **Silver**   | 2 orders, 2nd purchase >30 days   | Delayed activation, churn risk                |
+| **Bronze**   | 1 order only                      | No activation, minimal LTV                    |
+
+### Metric Definition Consistency###
+- **Phase 1 (Channel Analysis):** Full observation period, customer-level averages
+- **Phase 2-3 (Cohort Analysis):** Cohort-specific (month of first purchase)
+
+This methodological distinction explains metric variations between phases.
+
+---
+
+### How to Run This Analysis
+
+1. Clone the repository:  
+
+```bash
+git clone https://github.com/Craphtr/Ecommerce-Customer-Acquisition-Cohort-Quality-Analysis-Bigquery.git
+
+2. Open BigQuery and link the GA4 sample dataset.
+
+3. Run the SQL scripts in sql/ folder to create customer360 layer and cohort tables.
+
+4. Update visualization placeholders in visuals/ folder.
+
+5. Open README.md in GitHub to see fully rendered results.
+
+---
+
+### 📬 **Contact**
+TechCraphters Strategic Analytics
+
+Consultant: Jubril Davies
+
+Portfolio Inquiries: [jubril.davies@techcraphters.com]
+
+LinkedIn: [linkedin.com/in/jubrildavies]
+
+This is a simulated consulting case study built using the Google Analytics 4 public dataset. The engagement scenario, stakeholder context, and business stakes are representative of enterprise analytics challenges, while all data and results are derived from publicly available sources. This format demonstrates my consulting methodology and strategic communication capabilities without claiming specific client engagements.
