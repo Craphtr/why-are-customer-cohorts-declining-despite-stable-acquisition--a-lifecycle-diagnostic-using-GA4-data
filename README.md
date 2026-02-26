@@ -52,7 +52,9 @@ Customer quality decline is not an acquisition problem. The primary failure occu
 
 ## 📋 Engagement Context
 **Role:** Lead Analytics Consultant (Simulated)
+
 **Duration:** 6 weeks
+
 **Stakeholder:** Chief Marketing Officer & VP of Customer Retention
 
 **This is a simulated consulting case study** using the Google Analytics 4 public dataset. The business scenario, stakeholder dynamics, and strategic framework represent typical enterprise engagements; all data derives from publicly available sources.
@@ -142,7 +144,8 @@ Channel effects are marginal. The 4-percentage-point gap between "best" and "wor
 This indicates the business is successfully acquiring customers but struggling to retain them.
 The performance constraint appears post-acquisition, not in marketing mix.
 
->### **Judgement Call:** I initially suspected Search channel dilution due to its scale (28-31% of volume). However, cross-cohort analysis revealed channel mix remained stable—Search didn't increase disproportionately as quality declined. The deterioration pattern persisted uniformly across all sources. The problem was systemic, not channel-specific, forcing me to look post-acquisition.
+>### **Judgement Call:** 
+>I initially suspected Search channel dilution due to its scale (28-31% of volume). However, cross-cohort analysis revealed channel mix remained stable—Search didn't increase disproportionately as quality declined. The deterioration pattern persisted uniformly across all sources. The problem was systemic, not channel-specific, forcing me to look post-acquisition.
 
 ### ❌**Conclusion: Ruled Out** 
 - **Channel reallocation will not solve quality decline. The constraint lies downstream.**
@@ -175,7 +178,7 @@ Grouped Customers by **first purchase month** measuring economic and behavioral 
 
 **3. Channel mix stability:** Attribution distribution remained constant (±3%) across cohorts
 
-### **Consultant Insight**
+### **My Assessment**
 Earlier cohorts demonstrated stronger engagement and value concentration, establishing a baseline of efficient acquisition.
 As acquisition scaled, customer depth declined — suggesting growth shifted from quality-driven acquisition toward volume expansion. This pattern signals acquisition dilution, where newer customers enter the lifecycle with weaker long-term engagement potential.
 
@@ -225,7 +228,7 @@ Activation speed improved by 62% while activation coverage improved to 100% with
 
 The customers who do repeat are highly motivated and move quickly. But the vast majority—94% in January—never enter this funnel at all. They purchase once and vanish.
 
->#### **Consultant's Note:** 
+>#### **My Assessment:** 
 >This pattern is diagnostic gold. When speed increases but volume collapses, the system isn't broken—the filter is too tight. We are successfully serving only the most motivated customers while the majority leak out immediately post-purchase. This is a fixable infrastructure problem, not a market problem.
 
 ### **The Value Tier Collapse**
@@ -315,7 +318,9 @@ The proposed 40% Q2 acquisition increase is **conditionally opposed**. Proceedin
 
 ### **Three Concrete Changes:**
 **1. Campaign Scoring:** Rank all acquisition by 30-day activation rate, not conversion. Pause underperformers regardless of volume.
+
 **2. Cohort-Based Reporting:** Board reporting shifts to "activation velocity by cohort" — quality visibility replaces vanity metrics.
+
 **3. Infrastructure Investment:** Reallocate proposed acquisition increase to activation tooling pending experiment validation. Specific allocation requires technology audit and vendor assessment.
 
 ### **12-Month Outcome Targets**
