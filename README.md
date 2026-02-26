@@ -118,7 +118,7 @@ I evaluated customer quality by first-touch attribution channel, measuring behav
 ### **Visualization:**  
 ![Analysis 1 - Acquisition Channel Quality](./visuals/01_Channel_Quality_trend.png)
 
-#### **Key Results**
+### **Key Results**
 | Channel Group          | Volume | Avg Orders | Repeat Rate | Platinum % | One-Time % | Quality Assessment |
 | ---------------------- | ------ | ---------- | ----------- | ---------- | ---------- | ------------------ |
 | Internal/Self-Referral | 485    | 1.32       | 20%         | 13%        | 80%        | Baseline           |
