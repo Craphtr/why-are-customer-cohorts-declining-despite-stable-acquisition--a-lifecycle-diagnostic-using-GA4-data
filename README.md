@@ -119,7 +119,7 @@ Customers are considered high-value if they:
 
 ### **Hypothesis** - "Performance decline stems from channel mix shift—lower-quality channels scaling while high-quality channels stagnate."
 
-### **Analytical Approach**
+### **Methodology**
 Evaluated customer quality by first-touch attribution channel, measuring behavioral depth (purchase frequency, activation speed, value tier) as revenue proxies.
 
 ### **Visualization 1 - Channel Quality Trend:**  
@@ -159,7 +159,7 @@ The performance constraint appears post-acquisition, not in marketing mix.
 
 ### **Hypothesis** - "Customer behavior deteriorates across newer acquisition cohorts, indicating structural market shifts."
 
-### **Analytical Approach**
+### **Methodology**
 Grouped Customers by **first purchase month** measuring economic and behavioral proxy metrics (`new_customers`,`repeat_purchase_rate`,`pct_one_time_buyers`,`value_tiers`) to observe behavioral evolution.
 
 ### **Visualization 2 - Cohort Evolution:**  
